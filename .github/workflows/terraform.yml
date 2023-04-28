@@ -2,8 +2,11 @@ name: Terraform Linting
 
 on:
   pull_request:
-    branches: [test]
-  
+    branches:
+      - test
+  push:
+    branches:
+      - test
 jobs:
   lint:
     runs-on: ubuntu-latest
