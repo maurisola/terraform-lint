@@ -2,10 +2,11 @@ name: Terraform Linting
 
 on:
   pull_request:
-    branches: [test]
-  
+    branches:
+      - test
+
 jobs:
-  lint:
+  terraform-lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -13,7 +14,9 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: 1.0.9
+          terraform_version: "1.0.9"
+      - name: Terraform init
+        run: terraform init
       - name: Terraform fmt
         run: terraform fmt -check
       - name: Terraform validate
